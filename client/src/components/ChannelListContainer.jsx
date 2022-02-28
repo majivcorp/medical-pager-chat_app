@@ -8,7 +8,7 @@ import LogoutIcon from '../assets/logout.png';
 
 const SideBar = () => (
     <div className="channel-list__sidebar">
-        <div className="channel-list_sidebar__icon1">
+        <div className="channel-list__sidebar__icon1">
             <div className="icon1__inner">
                 <img src={HospitalIcon} alt="Hospital" width="30" />
             </div>
@@ -32,7 +32,42 @@ const ChannelListContainer = () => {
   return (
     <>
         <SideBar />
-        <div className="channel-list__wrapper"></div>
+        <div className="channel-list__list__wrapper">
+            <CompanyHeader />
+            <ChannelSearch />
+            <ChannelList 
+                filters={{}}
+                channelRenderFilterFn={() => {}}
+                List={(listProps) => (
+                    <TeamChannelList 
+                        {...listProps}
+                        type="team"
+                    />
+                )}
+                Preview={(previewProps) => (
+                    <TeamChannelPreview 
+                        {...previewProps}
+                        type="team"
+                    />
+                )}
+            />
+            <ChannelList 
+                filters={{}}
+                channelRenderFilterFn={() => {}}
+                List={(listProps) => (
+                    <TeamChannelList 
+                        {...listProps}
+                        type="messaging"
+                    />
+                )}
+                Preview={(previewProps) => (
+                    <TeamChannelPreview 
+                        {...previewProps}
+                        type="messaging"
+                    />
+                )}
+            />
+        </div>
     </>
   );
 }
